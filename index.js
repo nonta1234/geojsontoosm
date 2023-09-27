@@ -21,10 +21,13 @@ function geojsontoosm(geojson) {
         case "LineString":
             processLineString(geometry.coordinates, properties, ways, nodes, nodesIndex)
         break;
+        case "MultiLineString":
+            processMultiPolygon(geometry.coordinates, properties, relations, ways, nodes, nodesIndex)
+        break;
         case "Polygon":
             processMultiPolygon([geometry.coordinates], properties, relations, ways, nodes, nodesIndex)
         break;
-        case "Multipolygon":
+        case "MultiPolygon":
             processMultiPolygon(geometry.coordinates, properties, relations, ways, nodes, nodesIndex)
         break;
         default:
